@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Todos from "./components/Todos";
@@ -6,38 +6,47 @@ import AddTodo from "./components/AddTodo";
 
 const App = () => {
   const [showAddTodo, setShowAddTodo] = useState(false)
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "My First Todo",
-      description: "Description of Todo 1",
-    },
-    {
-      id: 2,
-      title: "My Second Todo",
-      description: "Description of Todo 2",
-    },
-    {
-      id: 3,
-      title: "My Third Todo",
-      description: "Description of Todo 3",
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
-  // Add Task
-  const addTodo = (todo) => {
-    let id = 1
-    if (todos.length > 0)  {
-      id = todos[todos.length - 1].id + 1
+  useEffect(() => {
+    const getTodo = async () => {
+      const todosFromServer = await fetchTodo()
+      setTodos(todosFromServer)
     }
 
-    const newTodo = { id, ...todo }
+    getTodo()
+  }, [])
 
-    setTodos([...todos, newTodo])
+  // Fetch Todo
+  const fetchTodo = async () => {
+    const res = await fetch('http://localhost:5000/todos')
+    const data = await res.json()
+
+    return data
   }
 
-  // Delete task
-  const deleteTodo = (id) => {
+  // Add Todo
+  const addTodo = async (todo) => {
+    const res = await fetch(
+      'http://localhost:5000/todos', 
+      {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },  
+        body: JSON.stringify(todo),
+      }
+    )
+
+    const data = await res.json()
+
+    setTodos([...todos, data])
+  }
+
+  // Delete Todo
+  const deleteTodo = async (id) => {
+    await fetch(`http://localhost:5000/todos/${id}`, {method: 'DELETE'})
+
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
