@@ -1,13 +1,13 @@
 {
   "todos": [
     {
-      "title": "Budget App",
-      "description": "123123",
+      "title": "My First Todo",
+      "description": "This is my first todo",
       "id": 1
     },
     {
-      "title": "Ice Candy",
-      "description": "100 pieces choco kisses flavor",
+      "title": "My Second Todo",
+      "description": "This is my second todo",
       "id": 2
     }
   ]

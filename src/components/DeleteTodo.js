@@ -5,7 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const DeleteTodo = ({ onTodoDelete }) => {
   return (
     <div>
-      <IconButton aria-label="delete" size="small" onClick={onTodoDelete} style={{ float: 'right' }}>
+      <IconButton aria-label="delete" size="medium" onClick={onTodoDelete} style={{ float: 'right' }}>
         <DeleteIcon fontSize="inherit" />
       </IconButton>
     </div>

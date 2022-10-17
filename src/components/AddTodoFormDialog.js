@@ -11,6 +11,12 @@ const AddTodoFormDialog = ({ open, handleClose, onTodoAdd }) => {
   const [title, setTitle] = React.useState('')
   const [description, setDescription] = React.useState('')
 
+  const closeDialog = (e) => {
+    setTitle('');
+    setDescription('');
+    handleClose();
+  };
+
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -64,7 +70,7 @@ const AddTodoFormDialog = ({ open, handleClose, onTodoAdd }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={closeDialog}>Cancel</Button>
           <Button onClick={onSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>

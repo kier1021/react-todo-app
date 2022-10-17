@@ -49,7 +49,7 @@ const TodosCard = ({ todos, onTodoAdd, onTodoDelete }) => {
             </IconButton>
           </div>
         }
-        title="My To-do List"
+        title="To do list"
         justify="center"
       />
       <DropDownMenu
