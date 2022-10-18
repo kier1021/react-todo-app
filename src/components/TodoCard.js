@@ -7,9 +7,9 @@ import DeleteTodo from "./DeleteTodo";
 
 const TodoCard = ({ todo, onTodoDelete }) => {
   return (
-    <Card sx={{ minWidth: 500 }}>
+    <Card sx={{ minWidth: 100, boxShadow: 3, borderRadius: 3, marginLeft: 3, marginRight: 3 }}>
       <CardContent>
-        <Grid container spacing={0} direction="column">
+        <Grid container spacing={0}>
           <Grid item xs={8}>
             <Typography variant="h5" component="div">
               {todo.title}

@@ -4,13 +4,8 @@ import Grid from "@mui/material/Grid";
 
 import Header from "./components/Header";
 import TodosCard from "./components/TodosCard";
-import Todos from "./components/Todos";
-import AddTodo from "./components/AddTodo";
-
-import Button from "@mui/material/Button";
 
 const App = () => {
-  const [showAddTodo, setShowAddTodo] = useState(false);
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -56,24 +51,23 @@ const App = () => {
     <div>
       <Header
         title="Todo App"
-        onAdd={() => setShowAddTodo(!showAddTodo)}
-        showAddTodo={showAddTodo}
       />
 
       <Grid
         container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justify="center"
+        spacing={2}
         style={{ minHeight: "100vh", marginTop: "30px" }}
       >
+        <Grid item xs={2}>
+        </Grid>
         <Grid item xs={8}>
           <TodosCard
             todos={todos}
             onTodoAdd={addTodo}
             onTodoDelete={deleteTodo}
           />
+        </Grid>
+        <Grid item xs={2}>
         </Grid>
       </Grid>
     </div>
